@@ -223,6 +223,14 @@ header = ["loan_price", "remaining_months", "repayment_interval", "future_value"
 # Set the output file path
 output_path = Path("inexpensive_loans.csv")
 
-# @TODO: Use the csv library and `csv.writer` to write the header row
+# Use the csv library and `csv.writer` to write the header row
 # and each row of `loan.values()` from the `inexpensive_loans` list.
-# YOUR CODE HERE!
+
+print("Writing the data to a CSV file...") #Indicates to user that CSV file is being generate. 
+
+csvpath = Path("inexpensive_loans.csv")
+with open(csvpath, 'w', newline='') as csvfile:
+    csvwriter = csv.writer(csvfile)
+    csvwriter.writerow(header) #Creates the CSV header. 
+    for row in inexpensive_loans: #Creates the CSV body. 
+        csvwriter.writerow(row.values())
