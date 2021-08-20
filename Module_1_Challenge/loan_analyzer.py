@@ -188,15 +188,19 @@ loans = [
     },
 ]
 
-# @TODO: Create an empty list called `inexpensive_loans`
-# YOUR CODE HERE!
+# Create an empty list called `inexpensive_loans`
+inexpensive_loans = []
 
-# @TODO: Loop through all the loans and append any that cost $500 or less to the `inexpensive_loans` list
-# YOUR CODE HERE!
+# Loop through all the loans and append any that cost $500 or less to the `inexpensive_loans` list
+for item in loans:
+    if item.get("loan_price") < 500: 
+        inexpensive_loans.append(item)  
 
-# @TODO: Print the `inexpensive_loans` list
-# YOUR CODE HERE!
+# Print the `inexpensive_loans` list
 
+print(f"Loans that are strictly less than $500 are as follows: {inexpensive_loans}")
+
+print() #Print blank line to seperate Part 4.
 
 """Part 5: Save the results.
 
@@ -211,6 +215,7 @@ Output this list of inexpensive loans to a csv file
     https://docs.python.org/3/library/csv.html#writer-objects
 
 """
+print("PART 5:") #Print header to keep track of part 5 output.
 
 # Set the output header
 header = ["loan_price", "remaining_months", "repayment_interval", "future_value"]
