@@ -30,7 +30,7 @@ sum_of_all_loans = sum(loan_costs) #Calculate the sum of all loans in list.
 print(f"The sum of all the loans is ${sum_of_all_loans}.")
 
 # What is the average loan amount from the list?
-# @TODO: Using the sum of all loans and the total number of loans, calculate the average loan price.
+# Using the sum of all loans and the total number of loans, calculate the average loan price.
 # Print the average loan amount
 
 average_loan_amount = sum_of_all_loans / total_number_of_loans #Calculates the average loan amount.
@@ -80,7 +80,7 @@ remaining_months = loan.get("remaining_months") #Extract remaining months from d
 print(f"The future value of the loan is ${future_value}.")
 print(f"The number of months remaining in the loan is {remaining_months}.")
 
-# Use the formula for Present Value to calculate a "fair value" of the loan.
+# Use the formula for Present Value to calculate a present value of the loan.
 # Use a minimum required return of 20% as the discount rate.
 #   You'll want to use the **monthly** version of the present value formula.
 #   HINT: Present Value = Future Value / (1 + Discount_Rate/12) ** remaining_months
@@ -92,7 +92,7 @@ present_value = future_value / (1 + (discount_rate / 12)) ** remaining_months #C
 print(f"The present value of the loan is ${round(present_value,2)}.")
 
 # If Present Value represents what the loan is really worth, does it make sense to buy the loan at its cost?
-# @TODO: Write a conditional statement (an if-else statement) to decide if the present value represents the loan's fair value.
+# Write a conditional statement (an if-else statement) to decide if the present value represents the loan's fair value.
 #    If the present value of the loan is greater than or equal to the cost, then print a message that says the loan is worth at least the cost to buy it.
 #    Else, the present value of the loan is less than the loan cost, then print a message that says that the loan is too expensive and not worth the price.
 
@@ -104,6 +104,8 @@ if present_value >= loan_price:
 else: 
     print ("The loan is too expensive and not worth the price.")
 
+print() #Print blank line to seperate Part 2. 
+
 """Part 3: Perform Financial Calculations.
 
 Perform financial calculations using functions.
@@ -114,6 +116,7 @@ Perform financial calculations using functions.
 2. Use the function to calculate the present value of the new loan given below.
     a. Use an `annual_discount_rate` of 0.2 for this new loan calculation.
 """
+print("PART 3:") #Print header to keep track of part 3 output.
 
 # Given the following loan data, you will need to calculate the present value for the loan
 new_loan = {
@@ -123,17 +126,28 @@ new_loan = {
     "future_value": 1000,
 }
 
-# @TODO: Define a new function that will be used to calculate present value.
+# Define a new function that will be used to calculate present value.
 #    This function should include parameters for `future_value`, `remaining_months`, and the `annual_discount_rate`
 #    The function should return the `present_value` for the loan.
-# YOUR CODE HERE!
 
+def calculate_present_value(future_value, remaining_months, annual_discount_rate): #Define function to calculate present value of loan using monthly present value formula.
+    present_value = future_value / (1 + (discount_rate / 12)) ** remaining_months 
+    return present_value
 
-# @TODO: Use the function to calculate the present value of the new loan given below.
+# Use the function to calculate the present value of the new loan given below.
 #    Use an `annual_discount_rate` of 0.2 for this new loan calculation.
-# YOUR CODE HERE!
-#print(f"The present value of the loan is: {present_value}")
 
+annual_discount_rate = 0.20
+
+#Utilize calculate_present_value function to return present_value on new_loan data. 
+present_value = calculate_present_value(
+    new_loan["future_value"],
+    new_loan["remaining_months"],
+    annual_discount_rate)
+
+print(f"The present value of the loan is ${round(present_value, 2)}.")
+
+print() #Print blank line to seperate Part 3.
 
 """Part 4: Conditionally filter lists of loans.
 
@@ -145,6 +159,7 @@ In this section, you will use a loop to iterate through a series of loans and se
     b. If the loan_price is less than 500 then append that loan to the `inexpensive_loans` list.
 3. Print the list of inexpensive_loans.
 """
+print("PART 4:") #Print header to keep track of part 4 output.
 
 loans = [
     {
